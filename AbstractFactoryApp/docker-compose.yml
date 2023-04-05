@@ -1,0 +1,26 @@
+﻿version: '3.8'
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "Qwerty12345"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - db-network
+
+  postgresql:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: myusername
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    networks:
+      - db-network
+
+networks:
+  db-network:
